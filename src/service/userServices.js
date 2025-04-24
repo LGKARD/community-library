@@ -1,5 +1,6 @@
 import userRepositories from "../repositories/userRepositories.js";
 import bcrypt from "bcrypt"
+import {generateJWT} from "../service/authService.js"
 
 async function createUserService(newUser) {
     const foundUser = await userRepositories.findUserByEmailRepository(newUser.email)
@@ -8,7 +9,8 @@ async function createUserService(newUser) {
     const passHash = await bcrypt.hash(newUser.password, 10)
     const user = await userRepositories.createUserRepository({...newUser, password: passHash})
     if (!user) throw new Error("Erro ao cadastrar usuário")
-    return user
+    const token = generateJWT(user.id)
+    return token
 }
 
 async function findAllUsersService() {
