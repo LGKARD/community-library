@@ -6,6 +6,7 @@ import { userSchema } from "../schema/userSchema.js";
 const router = Router();
 
 router.post("/users", validate(userSchema), userControlers.createUserController);
+router.post("/users/login", userControlers.loginUserController);
 
 router.get("/users", userControlers.findAllUsersController);
 router.get("/users/:id", validateUserId, userControlers.findUserByIdController);
