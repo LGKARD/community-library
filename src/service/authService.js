@@ -4,7 +4,7 @@ import userRepositories from "../repositories/userRepositories.js";
 import bcrypt from "bcrypt"
 
 function generateJWT(id) {
-    return jwt.sign({id}, process.env.SECRET_JWT, {expiresIn: '86400'});
+    return jwt.sign({id}, process.env.SECRET_JWT, {expiresIn: '24h'});
 }
 
 async function loginService(email, password) {
