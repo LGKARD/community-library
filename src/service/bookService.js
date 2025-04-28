@@ -1,3 +1,4 @@
+import { text } from "express";
 import bookRepositories from "../repositories/bookRepositories.js";
 
 async function createBookService(newBook, userId) {
@@ -33,4 +34,10 @@ async function deleteBookService(bookId, userId) {
     return response
 }
 
-export default { createBookService, findAllBooksService, findBookByIdService, updateBookService, deleteBookService }
+async function searchBookService(search) {
+    if (!search) return await bookRepositories.findAllBooksRepository();
+    const books = await bookRepositories.searchBookRepository(search);
+    return books;
+}
+
+export default { createBookService, findAllBooksService, findBookByIdService, updateBookService, deleteBookService, searchBookService }

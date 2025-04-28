@@ -1,7 +1,7 @@
 import bookService from "../service/bookService.js";
 
 async function createBookController(req, res) {
-    const newBook  = req.body;
+    const newBook = req.body;
     const userId = req.userId;
     try {
         const createdBook = await bookService.createBookService(newBook, userId);
@@ -53,4 +53,14 @@ async function deleteBookController(req, res) {
     }
 }
 
-export default { createBookController, findAllBooksController, findBookByIdController, updateBookController, deleteBookController };
+async function searchBookController(req, res) {
+    const { search } = req.query;
+    try {
+        const books = await bookService.searchBookService(search);
+        res.status(200).send(books);
+    } catch (error) {
+        res.status(400).send({ message: error.message })
+    }
+}
+
+export default { createBookController, findAllBooksController, findBookByIdController, updateBookController, deleteBookController, searchBookController };

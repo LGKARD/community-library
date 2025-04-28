@@ -12,6 +12,7 @@ router.use(authMiddleware);
 
 router.post("/books", validate(bookSchema), bookController.createBookController);
 
+router.get("/books/search", bookController.searchBookController);
 router.get("/books/:id", validateBookId, bookController.findBookByIdController);
 
 router.patch("/books/:id", validateBookId, bookController.updateBookController);
