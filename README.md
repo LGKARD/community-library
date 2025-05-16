@@ -1,91 +1,69 @@
 # Community Library
 
-Este é um projeto de uma biblioteca comunitária onde os usuários podem postar livros para compartilhar com outros usuários e também emprestar livros de outros membros da comunidade.
+Projeto de uma biblioteca comunitária onde os usuários podem postar livros para compartilhar com outros membros e também emprestar livros disponíveis na comunidade.
 
-## Instalação
+## 📌 Descrição
 
-### Pré-requisitos
+Este projeto consiste em um sistema backend desenvolvido com Node.js e Express para gerenciar livros, usuários e empréstimos em uma biblioteca comunitária. O sistema oferece autenticação via JWT, validação de dados com Zod, e armazenamento persistente utilizando SQLite. Ideal para fomentar o compartilhamento de livros em comunidades locais.
 
-- Node.js (v14.x ou superior)
-- npm (Node Package Manager) ou yarn
+## ⚙️ Tecnologias Utilizadas
 
-### Passos para instalação
+- **Node.js**: Ambiente de execução JavaScript no servidor.
+- **Express.js**: Framework para criação da API RESTful.
+- **SQLite**: Banco de dados leve e embutido.
+- **JSON Web Tokens (JWT)**: Autenticação e segurança.
+- **Zod**: Validação de esquemas de dados.
+- **dotenv**: Gerenciamento de variáveis de ambiente.
 
-1. Clone o repositório:
+## 🚀 Como Utilizar Localmente
+
+1. **Clone o repositório:**
 
    ```bash
    git clone https://github.com/LGKARD/community-library.git
    ```
 
-2. Acesse o diretório do projeto:
+2. **Acesse a pasta do projeto:**
 
    ```bash
    cd community-library
    ```
 
-3. Instale as dependências:
-
-   Com npm:
+3. **Instale as dependências:**
 
    ```bash
    npm install
    ```
 
-   Com yarn:
+4. **Crie um arquivo `.env` na raiz do projeto e defina as variáveis de ambiente:**
 
-   ```bash
-   yarn install
    ```
-
-4. Crie um arquivo `.env` na raiz do projeto e adicione suas variáveis de ambiente. Veja o exemplo abaixo:
-
-   ```PORT=3000
+   PORT=3000
    SECRET=your_jwt_secret
    ```
 
-   Substitua `your_jwt_secret` por um hash SHA256 usada para assinar tokens JWT.
+   Substitua `your_jwt_secret` por uma chave secreta para assinatura dos tokens JWT. Você pode gerar uma chave segura com:
 
-5. Gerando uma chave secreta de SHA256:
+   ```bash
+   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+   ```
 
-    Você pode gerar uma chave secreta com SHA256 executando o seguinte comando no terminal:
-
-    ```bash
-    node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-    ```
-
-    Isso gerará uma chave secreta aleatória de 256 bits em formato hexadecimal.
-6. Inicie o servidor:
-
-   Com npm:
+5. **Inicie o servidor:**
 
    ```bash
    npm start
    ```
 
-   Com yarn:
+6. **O servidor estará disponível em:**
 
-   ```bash
-   yarn start
+   ```
+   http://localhost:3000
    ```
 
-7. O servidor estará em execução em `http://localhost:3000`.
+## ⚠️ Observações
 
-## Rotas
+- O banco de dados SQLite será criado automaticamente na primeira execução.
+- Use ferramentas como Postman para testar as rotas da API.
+- Certifique-se de ter o Node.js instalado (versão 14 ou superior recomendada).
 
-- **/users**: Rotas para operações de usuários (criar, listar,buscar por ID, atualizar, excluir).
-- **/books**: Rotas para operações de livros (criar, listar, buscar por ID, atualizar, excluir).
-- **/loans**: Rotas para operações de empréstimos (criar, listar, buscar por ID, excluir).
 
-## Tecnologias Utilizadas
-
-- Node.js
-- Express.js
-- SQLite (ou outro banco de dados de sua escolha)
-- JSON Web Tokens (JWT) para autenticação
-- Zod para validação de esquemas de dados
-
-## Contribuição
-
-Se você gostou do projeto e deseja contribuir, fique à vontade para abrir uma issue ou enviar um pull request. Todas as contribuições são bem-vindas!
-
-Obrigado por acessar o projeto e por considerar contribuir para torná-lo ainda melhor!
